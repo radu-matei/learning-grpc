@@ -28,6 +28,9 @@ type routeGuideServer struct {
 }
 
 func (s *routeGuideServer) GetFeature(ctx context.Context, point *rpc.Point) (*rpc.Feature, error) {
+
+	fmt.Printf("received: lat: %d, lon: %d", point.Latitude, point.Longitude)
+
 	for _, feature := range s.savedFeatures {
 		if proto.Equal(feature.Location, point) {
 			return feature, nil
